@@ -171,7 +171,7 @@ BinaryTree::~BinaryTree() {
     right = nullptr;
 }
 
-// Copy Constructor (Deep Copy), creates a new BinaryTree object that is a deep copy of 'other'
+// Copy Constructor (Deep Copy), creates a new BinaryTree object that is a deep copy of other
 BinaryTree::BinaryTree(const BinaryTree& other) : data(0), left(nullptr), right(nullptr), is_empty_root_flag(true) {
     if (!other.isEmpty()) {
         this->data = other.data;
@@ -181,7 +181,7 @@ BinaryTree::BinaryTree(const BinaryTree& other) : data(0), left(nullptr), right(
     }
 }
 
-// Assigns the content of 'other' to the current BinaryTree object
+// Assigns the content of other to the current BinaryTree object
 BinaryTree& BinaryTree::operator=(const BinaryTree& other) {
     if (this == &other) {
         return *this;
@@ -193,7 +193,7 @@ BinaryTree& BinaryTree::operator=(const BinaryTree& other) {
     left = nullptr;
     right = nullptr;
 
-    // Copy data from 'other'
+    // Copy data from other
     if (other.isEmpty()) {
         this->is_empty_root_flag = true;
         this->data = 0; // Default uninitialized value
@@ -216,7 +216,6 @@ void BinaryTree::insert(int value) {
     if (isEmpty()) {
         data = value;
         is_empty_root_flag = false; // It's no longer an empty root
-        // left and right are already nullptr
     }
     else {
         if (value < this->data) {
@@ -233,7 +232,7 @@ bool BinaryTree::search(int value) const {
     if (isEmpty()) {
         return false;
     }
-    return _search(this, value); // Start recursive search
+    return _search(this, value); // recursive search
 }
 
 // Print tree elements in-order
@@ -242,8 +241,8 @@ void BinaryTree::printInOrder() const {
         std::cout << "Tree is empty.\n";
         return;
     }
-    _printInOrder(this); // Start recursive printing
-    std::cout << std::endl; // Add a new line at the end
+    _printInOrder(this); // recursive print
+    std::cout << std::endl;
 }
 
 // Get the minimum value in the tree
@@ -251,7 +250,7 @@ int BinaryTree::getMinValue() const {
     if (isEmpty()) {
         throw std::runtime_error("Attempted to get min value from an empty tree.");
     }
-    return _getMinValue(this); // Start recursive min value search
+    return _getMinValue(this); // recursive min value search
 }
 
 // Get the maximum value in the tree
@@ -259,7 +258,7 @@ int BinaryTree::getMaxValue() const {
     if (isEmpty()) {
         throw std::runtime_error("Attempted to get max value from an empty tree.");
     }
-    return _getMaxValue(this); // Start recursive max value search
+    return _getMaxValue(this); // recursive max value search
 }
 
 // Remove a value from the tree.

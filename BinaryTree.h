@@ -1,9 +1,13 @@
+/****************************************
+Assignment C++: 1
+Author: Adar Shapira, ID: 209580208
+        Almog Talker, ID: 322546680
+*****************************************/
 #ifndef BINARY_SEARCH_TREE_H
 #define BINARY_SEARCH_TREE_H
 
-#include <iostream> // For std::cout, std::endl in printInOrder, operator<<
+#include <iostream>
 
-// Forward declaration of BinaryTree class
 class BinaryTree;
 
 // Forward declaration of operator<< for friend declaration
@@ -14,56 +18,69 @@ private:
     int data;
     BinaryTree* left;
     BinaryTree* right;
+    bool is_empty_root_flag;
 
-    // Sentinel value to indicate an "empty" node for the isEmpty() method,
-    // assuming 0 is not a valid data point for a non-empty tree node.
-    static const int EMPTY_TREE_SENTINEL = 0;
-
-    // Private helper constructor for creating new nodes in _insert and _copy
+    // Private helper constructor for creating new nodes in _insert, _copy, and _remove
     BinaryTree(int val);
 
     // Helper function for recursive insertion
     BinaryTree* _insert(BinaryTree* node, int value);
+
     // Helper function for recursive search
-    bool _search(const BinaryTree* node, int value) const; // Parameter also const
+    bool _search(const BinaryTree* node, int value) const;
+
     // Helper function for recursive in-order printing
-    void _printInOrder(const BinaryTree* node) const; // Parameter also const
+    void _printInOrder(const BinaryTree* node) const;
+
     // Helper function to find minimum value recursively
-    int _getMinValue(const BinaryTree* node) const; // Parameter also const
+    int _getMinValue(const BinaryTree* node) const;
+
     // Helper function to find maximum value recursively
-    int _getMaxValue(const BinaryTree* node) const; // Parameter also const
+    int _getMaxValue(const BinaryTree* node) const;
+
     // Helper function for deep copy (used in copy constructor/assignment)
-    BinaryTree* _copy(const BinaryTree* other_node); // Parameter is const
+    BinaryTree* _copy(const BinaryTree* other_node);
+
     // Helper function for destructor (post-order traversal for deletion)
     void _destroy(BinaryTree* node);
 
+    // Helper function for recursive removal
+    BinaryTree* _remove(BinaryTree* node, int value);
+
+    // Helper function to find the node with the minimum value in a subtree
+    BinaryTree* _findMinNode(BinaryTree* node);
 
 public:
-    // Constructor (default for an empty tree or the conceptual root)
+    // Constructor
     BinaryTree();
     // Destructor
     ~BinaryTree();
 
-    // Copy Constructor (Deep Copy)
+    // Copy Constructor and Assignment Operator (deep copy)
     BinaryTree(const BinaryTree& other);
-    // Assignment Operator (Deep Copy + Self-Assignment Check)
     BinaryTree& operator=(const BinaryTree& other);
 
     // Public Members
     // Returns true if the tree (or this node representing the tree) is empty.
-    // An empty tree is considered to be a default-constructed object where data is the sentinel
-    // and no actual elements have been inserted yet.
     bool isEmpty() const;
-    // Inserts a new element into the tree while maintaining BST properties.
+
+    // Inserts a new element to the tree
     void insert(int value);
+
     // Returns true if the element exists in the tree, false otherwise.
     bool search(int value) const;
+
     // Prints the values in ascending order (in-order traversal).
     void printInOrder() const;
+
     // Returns the minimum value in the tree. Throws std::runtime_error if tree is empty.
     int getMinValue() const;
+
     // Returns the maximum value in the tree. Throws std::runtime_error if tree is empty.
     int getMaxValue() const;
+
+    // Removes a value from the tree. Throws std::runtime_error if tree is empty or value not found.
+    void remove(int value);
 
     // Operators
     // Adds a value to the tree (uses insert function).

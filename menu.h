@@ -1,7 +1,12 @@
+/****************************************
+Assignment C++: 1
+Author: Adar Shapira, ID: 209580208
+        Almog Talker, ID: 322546680
+*****************************************/
 #ifndef MENU_H
 #define MENU_H
 
-#include "BinarySearchTree.h" // Includes the header file for BinaryTree
+#include "BinaryTree.h" // Includes the header file for BinaryTree
 #include "SortedList.h"       // Includes the header file for SortedList
 #include <iostream>
 #include <limits> // For std::numeric_limits
@@ -29,7 +34,7 @@ public:
     // Constructor
     Menu();
     // Runs the main menu loop
-    void run();
+    void mainMenu();
 };
 
 #endif // MENU_H

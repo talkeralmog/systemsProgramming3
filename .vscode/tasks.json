@@ -1,0 +1,33 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: clang++ build full project", // שנה את ה-label שיהיה ברור
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-fcolor-diagnostics",
+                "-fansi-escape-codes",
+                "-g",
+                "${workspaceFolder}/main.cpp",        // הוסף את main.cpp
+                "${workspaceFolder}/BinaryTree.cpp",   // הוסף את BinaryTree.cpp
+                "${workspaceFolder}/Menu.cpp",         // הוסף את Menu.cpp
+                "${workspaceFolder}/SortedList.cpp",   // הוסף את SortedList.cpp
+                "-o",
+                "${workspaceFolder}/my_program",       // שם קובץ הרצה יחיד לכל הפרויקט
+                "-std=c++11" // או c++14 / c++17 / c++20 אם אתה מעדיף
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}" // שנה לתיקיית העבודה הבסיסית של הפרויקט
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Task to build the entire C++ project."
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/almogtalker/Desktop/systemsProgramming3/my_program'
+relocations:     []
+...

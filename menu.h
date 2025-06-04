@@ -6,18 +6,17 @@ Author: Adar Shapira, ID: 209580208
 #ifndef MENU_H
 #define MENU_H
 
-#include "BinaryTree.h" // Includes the header file for BinaryTree
-#include "SortedList.h"       // Includes the header file for SortedList
+#include "BinaryTree.h" 
+#include "SortedList.h"
 #include <iostream>
-#include <limits> // For std::numeric_limits
+#include <limits>
 #include <string>
 
 class Menu {
 private:
-    BinaryTree tree;    // An object of the BinaryTree class
-    SortedList list;    // An object of the SortedList class (acts as the head/first node)
+    BinaryTree tree;
+    SortedList list;
 
-    // Private menu display functions
     void displayMainMenu();
     void handleMainMenuSelection(int choice);
 
@@ -27,14 +26,12 @@ private:
     void displayListMenu();
     void handleListMenuSelection(int choice);
 
-    // Helper function to get integer input safely from the user
     int getIntegerInput(const std::string& prompt);
 
 public:
     // Constructor
     Menu();
-    // Runs the main menu loop
     void mainMenu();
 };
 
-#endif // MENU_H
+#endif

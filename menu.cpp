@@ -5,23 +5,18 @@ Author: Adar Shapira, ID: 209580208
 *****************************************/
 #include "Menu.h"
 
-// Constructor: Initializes the BinaryTree and SortedList objects.
 Menu::Menu() : tree(), list() {
-    // The 'tree' and 'list' objects are default-constructed,
-    // making them conceptually empty as per their class definitions.
 }
 
-// Runs the main menu loop, displaying options and handling user choices.
 void Menu::mainMenu() {
     int choice;
     do {
-        displayMainMenu(); // Display the main menu options
-        choice = getIntegerInput("Enter your choice: "); // Get user input
-        handleMainMenuSelection(choice); // Process the user's choice
-    } while (choice != 3); // Loop until the user chooses to exit (choice 3)
+        displayMainMenu();
+        choice = getIntegerInput("Enter your choice: ");
+        handleMainMenuSelection(choice);
+    } while (choice != 3);
 }
 
-// Displays the options for the main menu.
 void Menu::displayMainMenu() {
     std::cout << "Main Menu:\n";
     std::cout << "1. Binary Tree Menu\n";
@@ -29,24 +24,25 @@ void Menu::displayMainMenu() {
     std::cout << "3. Exit\n";
 }
 
-// Handles the user's selection from the main menu.
 void Menu::handleMainMenuSelection(int choice) {
     switch (choice) {
         case 1: // Enter Binary Tree Menu
             int tree_choice;
             do {
-                displayTreeMenu(); // Display tree menu options
-                tree_choice = getIntegerInput("Enter your choice: "); // Get user input
-                handleTreeMenuSelection(tree_choice); // Process choice
-            } while (tree_choice != 5); // Loop until user chooses to exit tree menu (choice 5)
+                displayTreeMenu();
+                tree_choice = getIntegerInput("Enter your choice: ");
+                handleTreeMenuSelection(tree_choice);
+            }
+            while (tree_choice != 5);
             break;
         case 2: // Enter Sorted List Menu
             int list_choice;
             do {
-                displayListMenu(); // Display list menu options
-                list_choice = getIntegerInput("Enter your choice: "); // Get user input
-                handleListMenuSelection(list_choice); // Process choice
-            } while (list_choice != 5); // Loop until user chooses to exit list menu (choice 5)
+                displayListMenu();
+                list_choice = getIntegerInput("Enter your choice: ");
+                handleListMenuSelection(list_choice);
+            }
+            while (list_choice != 5);
             break;
         case 3: // Exit Program
             break;
@@ -56,7 +52,6 @@ void Menu::handleMainMenuSelection(int choice) {
     }
 }
 
-// Displays the options for the Binary Tree menu.
 void Menu::displayTreeMenu() {
     std::cout << "Binary Tree Menu:\n";
     std::cout << "1. Add value to tree\n";
@@ -87,7 +82,7 @@ void Menu::handleTreeMenuSelection(int choice) {
             }
             break;
         case 3: // Delete tree
-            tree = BinaryTree();  // Re-initialize tree (old one is destructed)
+            tree = BinaryTree();
    			std::cout << "Tree deleted.\n";
     		break;
         case 4: // Print tree items in order
@@ -106,7 +101,6 @@ void Menu::handleTreeMenuSelection(int choice) {
     }
 }
 
-// Displays the options for the Sorted List menu.
 void Menu::displayListMenu() {
     std::cout << "Sorted List Menu:\n";
     std::cout << "1. Add value to list\n";
@@ -164,18 +158,14 @@ void Menu::handleListMenuSelection(int choice) {
     }
 }
 
-// Helper function to safely get an integer input from the user.
-// Handles invalid input (non-integer) by clearing the error state and prompting again.
 int Menu::getIntegerInput(const std::string& prompt) {
     int value;
     std::cout << prompt;
     while (!(std::cin >> value)) {
         std::cout << "Invalid input, please enter an integer: ";
-        std::cin.clear(); // Clear error flags
-        // Ignore the rest of the invalid input in the line
+        std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
-    // Ignore any remaining characters in the input buffer after reading the integer
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     return value;
 }
